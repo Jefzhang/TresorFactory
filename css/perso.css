@@ -1,0 +1,524 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+
+/*
+    Created on : 13 avr. 2014, 09:14:23
+    Author     : olivierserre
+*/
+@CHARSET "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+
+[class*="col-"].gris {
+    background-color: grey;
+    border: solid 1px white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.equipe{
+  background-color: #F0E573;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.equipe [class*="col-"]{
+    padding-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.temoignage p{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: x-large;
+}
+
+
+/*
+over-ride "Weak" message, show font in dark grey
+*/
+
+.progress-bar {
+    color: #333;
+}
+
+/*
+Reference:
+http://www.bootstrapzen.com/item/135/simple-login-form-logo/
+*/
+
+* {
+    -webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+
+  .form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		@include box-sizing(border-box);
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+
+body {
+	/*background: url(http://i.imgur.com/GHr12sH.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+}
+
+.login-form {
+	margin-top: 80px;
+}
+
+.register-form {
+  margin-top: 30px;
+}
+
+form[role=login] {
+	color: #5d5d5d;
+	background: #f2f2f2;
+	padding-top: 5px;
+  padding-left: 5px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+	form[role=login] img {
+		display: block;
+		margin:auto;
+    width: 50%;
+    height: auto;
+    text-align: center;
+
+	}
+	form[role=login] input,
+	form[role=login] button {
+		font-size: 18px;
+		margin: 16px 0;
+	}
+	form[role=login] > div {
+		text-align: center;
+	}
+
+  form[role=register]{
+    color: #5d5d5d;
+    background: #f2f2f2;
+    padding: 26px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+  }
+  form[role=register] img {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 35px;
+	}
+	form[role=register] input,
+	form[role=login] button {
+		font-size: 18px;
+		margin: 16px 0;
+	}
+	form[role=register] > div {
+		text-align: left;
+	}
+.form-links {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 50px;
+}
+	.form-links a {
+		color: #fff;
+	}
+
+.navbar{
+  background: white;
+  margin: 0 auto 0;
+
+  }
+
+
+
+
+.home {
+  background: #ffffff;
+  text-align: center;
+}
+  .bd-booticon {
+    display: block;
+    width: 20rem;
+    height: 10rem;
+    font-size: 8rem;
+    line-height: 9rem;
+    color: #ffffff;
+    text-align: center;
+    cursor: default;
+    background-color: #563d7c;
+    border-radius: 15%
+}
+
+.bd-booticon.inverse {
+    color: #563d7c;
+    background-color: #fff
+}
+
+.bd-booticon.outline {
+    background-color: transparent;
+    border: 1px solid #cdbfe3
+}
+
+.bd-masthead {
+    position: relative;
+    padding: 3rem 15px 2rem;
+    color: #fff;
+    text-align: center;
+    background-image: -webkit-linear-gradient(315deg, #002233, #006699, #1ab2ff);
+    background-image: -o-linear-gradient(315deg, #002233, #006699, #1ab2ff);
+    background-image: linear-gradient(135deg, #002233, #006699, #1ab2ff)
+}
+
+.bd-masthead .bd-booticon {
+    margin: 0 auto 2rem;
+    color: #fff;
+    border-color: #cdbfe3
+}
+
+.bd-masthead h1 {
+    font-weight: 300;
+    line-height: 1
+}
+
+.bd-masthead .lead {
+    margin-right: auto;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    font-size: 1.25rem;
+    color: #fff
+}
+
+.bd-masthead .version {
+    margin-top: -1rem;
+    margin-bottom: 2rem
+}
+
+.bd-masthead .btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ffe484;
+    border-color: #ffe484
+}
+
+.bd-masthead .btn:hover {
+    color: #2a2730;
+    background-color: #ffe484;
+    border-color: #ffe484
+}
+
+.bd-masthead .carbonad {
+    margin-bottom: -2rem !important
+}
+
+@media (min-width:576px) {
+    .bd-masthead {
+        padding-top: 8rem;
+        padding-bottom: 2rem
+    }
+
+    .bd-masthead .btn {
+        width: auto
+    }
+
+    .bd-masthead .carbonad {
+        margin-bottom: 0 !important
+    }
+}
+
+@media (min-width:768px) {
+    .bd-masthead {
+        padding-bottom: 4rem
+    }
+
+    .bd-masthead .bd-header {
+        margin-bottom: 4rem
+    }
+
+    .bd-masthead h1 {
+        font-size: 4rem
+    }
+
+    .bd-masthead .lead {
+        font-size: 1.5rem
+    }
+
+    .bd-masthead .carbonad {
+        margin-top: 3rem !important
+    }
+}
+
+@media (min-width:992px) {
+    .bd-masthead .lead {
+        width: 85%;
+        font-size: 2rem
+    }
+}
+
+
+.home-intro-block{
+  padding-top: 5rem;
+  text-align: center;
+  padding-bottom: 2rem;
+  background-color: #fff;
+}
+
+.home-intro-block .intro-title{
+  margin-right: auto;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  color: #000;
+  font-size: 4rem;
+
+}
+
+.home-intro-content{
+  color:#4d4d4d;
+  font-size: 2.25rem;
+  padding-top: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+@@media (min-width:576px) {
+  .home-intro-block{
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+  .intro-title{
+    font-size: 1.5rem;
+  }
+  .home-intro-content{
+    font-size: 1rem;
+  }
+}
+
+@@media (min-width:768px) {
+  .home-intro-block{
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+  .intro-title{
+    font-size: 3rem;
+  }
+  .home-intro-content{
+    font-size: 1.25rem;
+  }
+}
+
+.half-rule{
+  align:center;
+  width:13rem;
+}
+
+
+/*
+Page Activity
+*/
+
+.list-activi{
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+#activity-table{
+  background-color: #fff;
+}
+
+.activity-table{
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.list-title{
+  text-align: center;
+  background-image: -webkit-linear-gradient(315deg, #002233, #006699, #1ab2ff);
+  background-color: #002233;
+  color: #fff;
+
+}
+
+
+.activity-info{
+  text-align: center;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+
+
+.activity-modal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.acti-modal-content {
+  background-color: #f2f2f2;
+  margin: 5% auto 5% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+  height: auto;
+}
+
+.login-modal-content {
+  background-color: #f2f2f2;
+  margin: 5% auto 5% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  height: auto;
+}
+
+/* The Close Button (x) */
+.acti-modal-content .close {
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.acti-modal-content .close:hover,
+.acti-modal-content .close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.acti-modal-animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+.acti-modal-header{
+  /*background-image: -webkit-linear-gradient(315deg, #002233, #006699, #1ab2ff);
+  background-color: #002233;*/
+  color: #fff;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.acti-modal-footer{
+  background-color: #f2f2f2;
+  text-align: right;
+  padding-right: 1em;
+}
+
+.acti-modal-descrip{
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.acti-modal-incomTab{
+  margin-left: 1em;
+  margin-right: auto;
+
+}
+
+.acti-modal-net{
+  margin-left: 1em;
+  margin-right: auto;
+}
+
+.editor_edit{
+
+}
+
+.editor_remove{
+
+}
+
+.editor_detaille{
+
+}
+
+.text_center{
+  text-align: center;
+}
+
+
+.item-modal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+
+}
+
+.item-content-div{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.item-modal-content{
+  margin-top: 3em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 1em;
+}
+
+.item-table-title{
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  /*background-color: #66ff99;*/
+}
+
+.recette-detaille{
+  margin-top: 1em;
+}
+
+.depense-detaille{
+  margin-top: 1em;
+}
+/* Change styles for span and cancel button on extra small screens */

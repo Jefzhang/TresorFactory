@@ -1,0 +1,51 @@
+{
+    "data": [{
+            "id": "1",
+            "date": "03/08/2010",
+            "name": "Nouvel an chinois",
+            "recette": 220,
+            "depence": 200,
+            "profit": 20,
+            "description": "Pour celebrer le nouvel an chinois",
+            "recedet": [{
+                    "nom": "Liquide",
+                    "num": 80
+                },
+                {
+                    "nom": "Trigramme",
+                    "num": 120
+                }
+            ],
+            "dependet": [{
+                    "sub": true,
+                    "nom": "course tang frere",
+                    "num": 20
+                },
+                {
+                    "sub": false,
+                    "nom": "course cora",
+                    "num": 140
+                },
+                {
+                    "sub": false,
+                    "nom": "transport",
+                    "num": 40
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "date": "04/10/2011",
+            "name": "la fete de la lune",
+            "recette": 120,
+            "depence": 100,
+            "profit": 20,
+            "description": "soiree de la fete de la lune",
+            "facture": {
+                "index": 1,
+                "poste": "course",
+                "montant": 50
+            }
+        }
+    ]
+}
