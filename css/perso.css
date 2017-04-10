@@ -75,6 +75,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;*/
+    background-color: #e6e6e6;
 }
 
 .login-form {
@@ -520,5 +521,22 @@ Page Activity
 
 .depense-detaille{
   margin-top: 1em;
+}
+
+
+
+
+.admin{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  background-color: #fff;
+  border-style: groove;
+
+}
+
+.admin-header{
+  padding-left: 2em;
+  
 }
 /* Change styles for span and cancel button on extra small screens */

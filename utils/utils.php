@@ -63,8 +63,7 @@ END;
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Mon compte <span class="caret"></span></a>
           <ul class="dropdown-menu">
-              <li><a href="#">Changer mot de passe</a></li>
-              <li><a href="#">Modifier mon email</a></li>
+              <li><a href="?p=user">Administration</a></li>
               <li><a href="#">Supprimer mon compte</a></li>
               <li><a href="?todo=logout">Log out</a></li>
           </ul>
@@ -79,7 +78,7 @@ else{
        <a class="nav-link" href="#">Se connecter</a>
     </li>
     <li class="nav-item">
-       <a class="nav-link" href="#">Créer un compte</a>
+       <a class="nav-link" href="http://localhost/project/register.php">Créer un compte</a>
     </li>
   </ul>
 END;

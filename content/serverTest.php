@@ -5,6 +5,14 @@
  */
 
 // DataTables PHP library and database connection
+session_name("tresor");
+session_start();
+$login;
+if(isset($_SESSION['login'])){
+	$login = $_SESSION['login'];
+}
+else $login = null;
+
 require("/Applications/XAMPP/xamppfiles/htdocs/project/data/database.php");
 include( "/Applications/XAMPP/xamppfiles/htdocs/project/php/DataTables.php" );
 
@@ -34,28 +42,30 @@ use
 //$dbh = Database::connect();
 
 // Build our Editor instance and process the data coming from _POST
-Editor::inst( $db, 'activityList','id')
+Editor::inst( $db, 'activityList')
 	->fields(
-    //Field::inst('id')->set(false),
-		Field::inst( 'name' )
+    Field::inst('activityList.id')->set(false),
+		Field::inst( 'activityList.name' )
 			->validator( 'Validate::notEmpty' ),
-		Field::inst( 'date' )
+		Field::inst( 'activityList.date' )
 			->validator( 'Validate::notEmpty' )
 			->validator( 'Validate::dateFormat', array( 'format'=>'d-m-y' ) )
 			->getFormatter( 'Format::date_sql_to_format', 'd-m-y' )
 			->setFormatter( 'Format::date_format_to_sql', 'd-m-y' ),
-		Field::inst( 'description' )
+		Field::inst( 'activityList.description' )
 			->validator( 'Validate::notEmpty' ),
-      Field::inst( 'recette' )
+      Field::inst( 'activityList.recette' )
 			->validator( 'Validate::notEmpty' )
 			->validator( 'Validate::numeric' ),
-		Field::inst( 'depence' )
+		Field::inst( 'activityList.depence' )
 			->validator( 'Validate::notEmpty' )
 			->validator( 'Validate::numeric' ),
-		Field::inst( 'profit' )
+		Field::inst( 'activityList.profit' )
 			->validator( 'Validate::notEmpty' )
 			->validator( 'Validate::numeric' )
 	)
+	->leftjoin('binetActivity','activityList.id','=','binetActivity.eveId')
+	->where('binetActivity.binet',$login,'=')
 	->process( $_POST )
 	->json();
 

@@ -14,24 +14,24 @@ $(document).ready(function(){
     //"idSrc":"id",
     "fields": [ {
             "label": "Nom d'activité:",
-            "name": "name"
+            "name": "activityList.name"
         }, {
             "label": "Date d'avoir lieu:",
-            "name": "date",
+            "name": "activityList.date",
             "type": "datetime",
             "format": "DD-MM-YY"
         }, {
             "label": "Description:",
-            "name": "description"
+            "name": "activityList.description"
         }, {
             "label": "Recette:",
-            "name": "recette"
+            "name": "activityList.recette"
         },{
             "label": "Depence:",
-            "name": "depence"
+            "name": "activityList.depence"
         }, {
             "label":"Profit",
-            "name":"profit"
+            "name":"activityList.profit"
         }
     ]
 });
@@ -92,29 +92,29 @@ table=$('#activity-table').DataTable( {
     "ajax":"http://localhost/project/content/serverTest.php",
     columnDef:[ {
 "targets": [ 0 ],
-"data": "date[, ]"
+"data": "activityList.date[, ]"
 } ],
     columns: [
         {
-          data: "date",
+          data: "activityList.date",
           className:"text_center"
         },
         {
-          data: "name",
+          data: "activityList.name",
           className:"text_center"
         },
         {
-          data: "recette",
+          data: "activityList.recette",
           render: $.fn.dataTable.render.number('.',',',2,'€'),
           className:"text_center"
         },
         {
-          data: "depence",
+          data: "activityList.depence",
           render: $.fn.dataTable.render.number('.',',',2,'€'),
           className:'text_center'
         },
         {
-          data: "profit",
+          data: "activityList.profit",
           render: $.fn.dataTable.render.number('.',',',2,'€'),
           className:'text_center'
         },
@@ -425,13 +425,14 @@ $("#activity-table").on('click','button.editor_detaille',function(){
 //e.preventDefault();
 
 $("#activity-modal").css('display',"block");
+//console.log(table.row($(this).closest('tr')));
 var rowId = table.row($(this).closest('tr')).id();
-var recette =table.row("#"+rowId).data()["recette"];
-var depense = table.row("#"+rowId).data()["depence"];
-var descrip = table.row('#'+rowId).data()["description"];
-var name = table.row('#'+rowId).data()["name"];
-var date = table.row('#'+rowId).data()["date"];
-var profit = table.row('#'+rowId).data()["profit"];
+var recette =table.row("#"+rowId).data()["activityList"]["recette"];
+var depense = table.row("#"+rowId).data()["activityList"]["depence"];
+var descrip = table.row('#'+rowId).data()["activityList"]["description"];
+var name = table.row('#'+rowId).data()["activityList"]["name"];
+var date = table.row('#'+rowId).data()["activityList"]["date"];
+var profit = table.row('#'+rowId).data()["activityList"]["profit"];
 
 var server = 'http://localhost/project/content/serverDatabase.php';
 $.ajax({
@@ -467,7 +468,7 @@ success: function(json,statut){
   depenceInfo +="<th style=\"text-align:right\">"+depense+"</th></tr>";
   $("#acti-modal-incomInfo").html(recetteInfo);
   $("#acti-modal-expenInfo").html(depenceInfo);
-  console.log(typeof(depense));
+  //console.log(typeof(depense));
   var pieData = [['Recette',parseFloat(recette)],['Profit',parseFloat(profit)],['Depense',parseFloat(depense)]];
   myLabels = $.makeArray($(pieData).map(function(){return this[1]+'&#8364;'}));
   var plot1 = $.jqplot('pie1', [pieData], {
