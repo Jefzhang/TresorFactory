@@ -172,6 +172,7 @@ function generateHTMLHeader($title, $link)
 
      <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
      <script type="text/javascript" src="js/bootstrap.js"></script>
+     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 
      <script type="text/javascript" src="js/dataTables.min.js"></script>
      <script type="text/javascript" src="js/dataTables.editor.js"></script>
