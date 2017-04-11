@@ -19,10 +19,16 @@ else{
   $pemited = false;
 }
 if($pemited){
-  $id = $_POST['id'];
-  $value  = $_POST['value'];
-  echo $value;
-  Utilisateurs::changeInfo($dbh,$login,$id,$value);
+  if($_GET['a']=='g'){
+    echo json_encode(Utilisateurs::getUtilisateurArray($dbh,$login));
+  }
+  else if($_GET['a']=='c'){
+    $id = $_POST['id'];
+    $value  = $_POST['value'];
+    //echo $value;
+    echo Utilisateurs::changeInfo($dbh,$login,$id,$value);
+  }
+
 }
 
 

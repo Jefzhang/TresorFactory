@@ -562,6 +562,15 @@ Page Activity
 .admin-edit-select{
   text-align: left;
 }
+
+
+input.invalid, textarea.invalid{
+	border: 2px solid red;
+}
+
+input.valid, textarea.valid{
+	border: 2px solid green;
+}
 /* Change styles for span and cancel button on extra small screens */
 
 /* Change styles for span and cancel button on extra small screens */

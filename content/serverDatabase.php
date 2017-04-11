@@ -7,7 +7,7 @@
   require('/Applications/XAMPP/xamppfiles/htdocs/project/data/depense.php');
 
   $pemited = false;
-  file_put_contents("http.txt",$_SESSION['loggedIn'], FILE_APPEND | LOCK_EX);
+  //file_put_contents("http.txt",$_SESSION['loggedIn'], FILE_APPEND | LOCK_EX);
 
   //echo implode(" ",$_SESSION);
   if($_SESSION['loggedIn']==true){
