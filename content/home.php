@@ -53,12 +53,13 @@
     <hr class=half-rule>
   </div>
 
-
+<!--
     <footer class="bas" >
         <div class="col-md-6"><a href="http://localhost/Project/content/about.html"> About </div>
         <div class="col-md-6"> <a href="http://localhost/Project/content/contact.html"> Contacter nous </a> </div>
 
     </footer>
+  -->
 
 
 

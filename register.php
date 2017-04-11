@@ -31,7 +31,8 @@ if(isset($_POST["login"]) && $_POST["login"] != "" &&
      if($user==null){
        if($mdp1==$mdp2){
          $solde = 0;
-         Utilisateurs::insererUtilisateur($dbh,$login,$mdp1,$nom,$prenom,$poste,$promo,$email,$tel,$solde);
+         $sub = 0;
+         Utilisateurs::insererUtilisateur($dbh,$login,$mdp1,$nom,$prenom,$poste,$promo,$email,$tel,$solde,$sub);
          //$imageoutput=basename($_FILES["image"]["name"]);
          //file_put_contents($imageoutput,$image);
         // move_uploaded_file($_FILES["image"]["tmp_name"], $imageoutput);
