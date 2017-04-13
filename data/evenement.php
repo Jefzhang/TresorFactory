@@ -12,7 +12,7 @@ class Evenement{
   }
 
   public static function getEvenement($dbh,$login){
-    $query = "SELECT `activityList`.* FROM `activityList` JOIN `binetActivity` ON `activityList`.id = `binetActivity`.eveId WHERE `binetActivity`.binet = ?";
+    $query = "SELECT `activityList`.* FROM `activityList` JOIN `binetActivity` ON `activityList`.id = `binetActivity`.eveId WHERE `binetActivity`.binet = ? ORDER BY `activityList`.`date`";
     $sth = $dbh ->prepare($query);
     $sth ->setFetchMode(PDO::FETCH_ASSOC);
     $sth->execute(array($login));

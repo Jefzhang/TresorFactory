@@ -29,6 +29,21 @@ class Utilisateurs
         return $str;
     }
 
+    public static function getSolde($dbh,$login){
+      $query = "SELECT `solde` FROM `binetlist` WHERE `login`= ?";
+      $sth = $dbh->prepare($query);
+      $sth ->setFetchMode(PDO::FETCH_NUM);
+      $sth->execute(array($login));
+      return $sth->fetch();
+    }
+
+    public static function getSub($dbh,$login){
+      $query = "SELECT `sub` FROM `binetlist` WHERE `login`= ?";
+      $sth = $dbh->prepare($query);
+      $sth ->setFetchMode(PDO::FETCH_NUM);
+      $sth->execute(array($login));
+      return $sth->fetch();
+    }
 
     public static function getUtilisateur($dbh, $login)
     {

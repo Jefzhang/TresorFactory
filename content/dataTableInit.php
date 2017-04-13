@@ -11,7 +11,7 @@ if($_SESSION['loggedIn']==true){
   $arrayData = Evenement::getEvenement($dbh,$login);
   $newArray = array();
   foreach($arrayData as $eve){
-    file_put_contents("http.txt",json_encode($eve), FILE_APPEND | LOCK_EX);
+    //file_put_contents("http.txt",json_encode($eve), FILE_APPEND | LOCK_EX);
     $rowId = "row_".$eve['id'];
     $newEve = array("DT_RowId"=>$rowId);
     $newEve = array_merge($newEve,array_slice($eve,1,6));

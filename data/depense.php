@@ -37,6 +37,14 @@ class Depense
     $sth->execute(array($eveId));
   }
 
+  public static function getMontantSub($dbh,$eveId){
+    $query = "SELECT `montant` FROM `depense` WHERE `sub`=? AND `eveId`=?";
+    $sth = $dbh->prepare($query);
+    $sth->setFetchMode(PDO::FETCH_NUM);
+    $sth->execute(array(1,$eveId));
+    return $sth->fetchAll();
+  }
+
 }
 
  ?>

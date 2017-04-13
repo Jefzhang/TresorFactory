@@ -166,6 +166,7 @@ function generateHTMLHeader($title, $link)
      <link rel="stylesheet" type="text/css" href="css/jquery.jqplot.css">
      <link rel="stylesheet" type="text/css" href="css/editor.dataTables.css">
      <link rel="stylesheet" type="text/css" href="css/editor.bootstrap.css">
+     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
      <link rel="stylesheet" href="css/jquery.jexcel.css" type="text/css">
 
 
@@ -177,6 +178,12 @@ function generateHTMLHeader($title, $link)
      <script type="text/javascript" src="js/jquery.validate.min.js"></script>
      <script language="javascript" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
      <script language="javascript" type="text/javascript" src="js/jqplot.pieRenderer.js"></script>
+     <script language="javascript" type="text/javascript" src="js/jqplot.highlighter.js"></script>
+     <script language="javascript" type="text/javascript" src="js/jqplot.cursor.js"></script>
+     <script language="javascript" type="text/javascript" src="js/jqplot.pointLabels.js"></script>
+     <script type="text/javascript" src="js/jqplot.dateAxisRenderer.js"></script>
+     <script language="javascript" type="text/javascript" src="js/jqplot.canvasAxisTickRenderer.js"></script>
+
      <script type="text/javascript" src="js/moment.js"></script>
      <script type="text/javascript" src="js/jquery.jexcel.js"></script>
      </head>
