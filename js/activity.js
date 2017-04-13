@@ -69,6 +69,7 @@ editor.on('create',function(e,json,data){
   console.log(data);
   var id = data["DT_RowId"].split("_")[1];
   var server = 'http://localhost/project/content/serverDatabase.php';
+  /*
   $.ajax({
     url: server,
     data:'action=add'+ '&eveId='+id,
@@ -76,7 +77,7 @@ editor.on('create',function(e,json,data){
     success:function(succe,statut){
       console.log(succe);
 
-    }});
+    }});*/
 
 });
 

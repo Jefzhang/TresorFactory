@@ -5,15 +5,22 @@
  */
 
 // DataTables PHP library and database connection
+require("/Applications/XAMPP/xamppfiles/htdocs/project/data/evenement.php");
+require("/Applications/XAMPP/xamppfiles/htdocs/project/data/database.php");
 session_name("tresor");
 session_start();
 $login;
+$pemitted=false;
+$maxId;
 if(isset($_SESSION['login'])){
+	$dbh = Database::connect();
 	$login = $_SESSION['login'];
+	$pemitted = true;
+	$maxId = Evenement::getMaxid($dbh)[0];
 }
 else $login = null;
 
-require("/Applications/XAMPP/xamppfiles/htdocs/project/data/database.php");
+//require("/Applications/XAMPP/xamppfiles/htdocs/project/data/database.php");
 include( "/Applications/XAMPP/xamppfiles/htdocs/project/php/DataTables.php" );
 
 // Alias Editor classes so they are easy to use
@@ -22,6 +29,7 @@ use
 	DataTables\Editor\Field,
 	DataTables\Editor\Format,
 	DataTables\Editor\Mjoin,
+	//DataTables\Editor\Join,
 	DataTables\Editor\Options,
 	DataTables\Editor\Upload,
 	DataTables\Editor\Validate;
@@ -42,32 +50,56 @@ use
 //$dbh = Database::connect();
 
 // Build our Editor instance and process the data coming from _POST
+if($pemitted){
 Editor::inst( $db, 'activityList')
 	->fields(
-    Field::inst('activityList.id')->set(false),
-		Field::inst( 'activityList.name' )
+    //Field::inst('activityList.id'),
+		Field::inst( 'name' )
 			->validator( 'Validate::notEmpty' ),
-		Field::inst( 'activityList.date' )
+		Field::inst( 'date' )
 			->validator( 'Validate::notEmpty' )
 			->validator( 'Validate::dateFormat', array( 'format'=>'d-m-y' ) )
 			->getFormatter( 'Format::date_sql_to_format', 'd-m-y' )
 			->setFormatter( 'Format::date_format_to_sql', 'd-m-y' ),
-		Field::inst( 'activityList.description' )
+		Field::inst( 'description' )
 			->validator( 'Validate::notEmpty' ),
-      Field::inst( 'activityList.recette' )
+      Field::inst( 'recette' )
 			->validator( 'Validate::notEmpty' )
 			->validator( 'Validate::numeric' ),
-		Field::inst( 'activityList.depence' )
+		Field::inst( 'depence' )
 			->validator( 'Validate::notEmpty' )
 			->validator( 'Validate::numeric' ),
-		Field::inst( 'activityList.profit' )
+		Field::inst( 'profit' )
 			->validator( 'Validate::notEmpty' )
 			->validator( 'Validate::numeric' )
+
+
 	)
-	->leftjoin('binetActivity','activityList.id','=','binetActivity.eveId')
-	->where('binetActivity.binet',$login,'=')
+
+  /*->join(
+		  Join::inst('binetActivity','array')
+			    ->link('activityList.id','binetActivity.id')
+
+		)*/
+
+
+	/*->on('preCreate',function($editor,$values){
+		global $maxId;
+		$maxId = $maxId +1;
+		$editor->field('binetActivity.binet')
+		     //->set(Field::SET_CREATE)
+		     ->setValue($_SESSION['login']);
+		$editor->field('binetActivity.eveId')
+	  //new Field('binetActivity.eveId')
+		    // ->set(Field::SET_CREATE)
+				 ->setValue($maxId);
+	})*/
+
+
+	//
+
 	->process( $_POST )
-	->json();
+	->json();}
 
 
 

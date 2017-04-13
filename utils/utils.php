@@ -169,11 +169,11 @@ function generateHTMLHeader($title, $link)
      <link rel="stylesheet" href="css/jquery.jexcel.css" type="text/css">
 
 
-     <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+     <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
      <script type="text/javascript" src="js/bootstrap.js"></script>
 
      <script type="text/javascript" src="js/dataTables.min.js"></script>
-     <script type="text/javascript" src="js/dataTables.editor.js"></script>
+     <script type="text/javascript" src="js/dataTables.editor.min.js"></script>
      <script type="text/javascript" src="js/jquery.validate.min.js"></script>
      <script language="javascript" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
      <script language="javascript" type="text/javascript" src="js/jqplot.pieRenderer.js"></script>

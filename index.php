@@ -68,7 +68,8 @@ if (isset($_SESSION['loggedIn'])&&$_SESSION["loggedIn"]) {         //already log
     $page = $_GET['p'];
     if($page=='home')  require("content/home.php");
     else if($page=='compte'){
-      echo Utilisateurs::getUtilisateur($dbh,$_SESSION['login']);
+      //echo Utilisateurs::getUtilisateur($dbh,$_SESSION['login']);
+      require("content/compte.php");
     }
     else if($page=='activity'){
       require("content/activity.php");
