@@ -1,5 +1,5 @@
 <div class="container-fluid compte-content">
-    <div class="row ">
+    <div class="row">
          <div class="col-md-6" style="text-align:center" >
            <div class="row compte-bilan-chart" style="background-color:#333333" id="bilan-chart">
            </div>
@@ -9,6 +9,10 @@
 
            </div>
          </div>
+    </div>
+    <div class="row activity-fil">
+      <div class="col-md-8 col-md-offset-2 " id="activity-fil">
+      </div>
     </div>
 </div>
 <script>
@@ -183,7 +187,34 @@ $(document).ready(function(){
       }
 
 
-    })
+    });
+    var filActivity = "";
+    for(var i=eveData.length-1;i>=0;i--){
+      filActivity += "<div class=\"panel panel-default\">";
+      filActivity +="<div class=\"panel-heading\">";
+      filActivity += "<h2 class=\"panel-title text-center\">";
+      filActivity += eveData[i]["date"];
+      filActivity += "<span class=\"label label-success pull-right\" tooltip=\"Profit net\" tooltip-placement=\"left\">";
+      filActivity += eveData[i]["profit"]+"&nbsp;"+"€";
+      filActivity += "</span></h2></div>";
+
+      filActivity +="<table class=\"table table-striped table-hover table-condensed history\"><tbody><tr>";
+      filActivity +="<td class=\"name\">"
+      filActivity +=eveData[i]["name"]+"</td>";
+      filActivity +="<td class=\"recette\">Recette</td>";
+      filActivity +="<td class=\"montant\"><span class=\"label label-info\">";;
+      filActivity +="+"+eveData[i]["recette"]+"&nbsp;"+"€";
+      filActivity +="</span></td></tr><tr>";
+
+      filActivity +="<td class=\"name\">"
+      filActivity +=eveData[i]["name"]+"</td>";
+      filActivity +="<td class=\"recette\">Depense</td>";
+      filActivity +="<td class=\"montant\">";
+      filActivity +="<span class=\"label label-danger\">";
+      filActivity +="-"+eveData[i]["depence"]+"&nbsp;"+"€";
+      filActivity +="</span></td></tr></tbody></table></div>";
+    }
+    $('#activity-fil').html(filActivity);
 
   }  //success
 })  //ajax

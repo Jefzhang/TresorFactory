@@ -75,8 +75,8 @@
                 </tbody>
               </table>
             </div>
-            <div class="row">
-              <div id="pie1" style="">
+            <div class="row acti-modal-net">
+              <div id="pie1" >
               </div>
 
             </div>
@@ -663,12 +663,12 @@ success: function(json,statut){
             grid: {
                   drawBorder: false,
                   drawGridlines: false,
-                  background: '#ffffff',
+                  background: '#333333',
                   shadow:false
               },
             legend:{
                 show:true,
-                placement: 'outside',
+                //placement: 'outside',
                 rendererOptions: {
                     numberRows: 1
                 },

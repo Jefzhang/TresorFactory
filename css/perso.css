@@ -577,7 +577,6 @@ input.valid, textarea.valid{
   margin-right: 3%;
   margin-top: 2%;
   margin-bottom: 5%;
-  height: 80%;
   background-color: #fff;
 }
 .bilan-content{
@@ -588,7 +587,28 @@ input.valid, textarea.valid{
   margin-top:1em;
   margin-left: 1em;
   margin-right: 1em;
+  margin-bottom: 1em;
 }
+
+.activity-fil{
+  margin-top:30px;
+  margin-bottom: auto;
+}
+
+.history td.name{
+  width:33%;
+}
+
+.history td.recette{
+  width:33%;
+  text-align: center;
+}
+
+.history td.montant{
+  width:33%;
+  text-align: right;
+}
+
 /* Change styles for span and cancel button on extra small screens */
 
 /* Change styles for span and cancel button on extra small screens */
