@@ -8,13 +8,13 @@
       </div>
     </div>
     <div class="row">
-    <div class="col-md-2 sidebar rightverticalLine">
+    <!--<div class="col-md-2 sidebar rightverticalLine">
       <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Information</a></li>
             <li><a href="#">Historique</a></li>
       </ul>
-    </div>
-    <div class="col-md-10 admin-info">
+    </div>-->
+    <div class="col-md-12 admin-info">
       <div class="row">
         <div class="col-md-6 admin-info-title">
           Binet :
