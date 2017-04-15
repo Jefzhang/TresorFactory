@@ -28,7 +28,7 @@ function generateMenu($loggedIn)
       <div class="navbar navbar-default" id="menu">
           <nav class="container">
           <div class="navbar-header">
-               <img src="images/TresorFactory.png"
+               <img src="images/TresorFactorylogo.png"
                  alt="Affichage d'une aide texte">
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
