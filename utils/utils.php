@@ -183,6 +183,7 @@ function generateHTMLHeader($title, $link)
      <script language="javascript" type="text/javascript" src="js/jqplot.pointLabels.js"></script>
      <script type="text/javascript" src="js/jqplot.dateAxisRenderer.js"></script>
      <script language="javascript" type="text/javascript" src="js/jqplot.canvasAxisTickRenderer.js"></script>
+     <script type="text/javascript" src="js/jqplot.enhancedPieLegendRenderer.js"></script>
 
      <script type="text/javascript" src="js/moment.js"></script>
      <script type="text/javascript" src="js/jquery.jexcel.js"></script>

@@ -98,7 +98,7 @@
   <div class="acti-modal-content acti-modal-animate container-fluid">
     <div class="row acti-modal-header bg-primary" style="text-align:center">
         <div id="item-modal-title" class="item-modal-title" style="text-align:center">
-             <p>Détaille de l'évenement</p>
+             <!--<p>Détaille de l'évenement</p>-->
         </div>
     </div>
     <hr>
@@ -120,7 +120,7 @@
       <div class="col-md-7">
         <div class="row item-table-title acti-modal-incomTab" style="background-color:#ff8080">
           <div class="col-md-6">
-            Depense
+            Depense net
           </div>
           <div class="col-md-6" id="depense-total"></div>
         </div>
@@ -171,10 +171,10 @@ $(document).ready(function(){
             "label": "Recette:",
             "name": "recette"
         },{
-            "label": "Depence:",
+            "label": "Depence net:",
             "name": "depence"
         }, {
-            "label":"Profit",
+            "label":"Profit net",
             "name":"profit"
         }
     ]
@@ -499,11 +499,14 @@ $("#activity-table").on('dblclick','tbody tr',function(){
 
   var rowId = table.row($(this).closest('tr')).id();
   console.log(table.row("#"+rowId).data());
+  var name = table.row("#"+rowId).data()["name"];
   var recette =table.row("#"+rowId).data()["recette"];
   var depense = table.row("#"+rowId).data()["depence"];
+  $("#item-modal-title").html(name);
   $("#recette-total").html("€"+recette);
   $("#depense-total").html("€"+depense);
   eveId = rowId.split("_")[1];
+  console.log(eveId);
   changed = false;                            //initially we haven't changed the data
   var server = "http://localhost/project/content/serverDatabase.php";
   $.ajax({                            //get the information of "recette" and "depense"
@@ -595,7 +598,6 @@ $("#activity-table").on('click','button.editor_detaille',function(){
 $("#activity-modal").css('display',"block");
 //console.log(table.row($(this).closest('tr')));
 var rowId = table.row($(this).closest('tr')).id();
-console.log(rowId);
 var recette =table.row("#"+rowId).data()["recette"];
 var depense = table.row("#"+rowId).data()["depence"];
 var descrip = table.row('#'+rowId).data()["description"];
@@ -623,17 +625,22 @@ success: function(json,statut){
     recetteInfo +="<td style=\"text-align:right\">"+acti.recette[term][1]+"</td></tr>";
   }
   for(term in acti.depense){
-    depenceInfo +="<tr><th>"+acti.depense[term][0]+"</th>";
-    depenceInfo +="<td style=\"text-align:right\">"+acti.depense[term][1]+"</td></tr>";
+    var nom = acti.depense[term][0];
     if(acti.depense[term][2]==1){
-      var nom = acti.depense[term][0]+" (sub)";
+      //
+      nom =  nom+" (sub)";
+    }
+      depenceInfo +="<tr><th>"+nom+"</th>";
+      depenceInfo +="<td style=\"text-align:right\">"+acti.depense[term][1]+"</td></tr>";
+
+      /*var nom = acti.depense[term][0]+" (sub)";
       recetteInfo+="<tr><th>"+nom+"</th>";
       recetteInfo+="<td style=\"text-align:right\">"+acti.depense[term][1]+"</td></tr>";
-    }
+    }*/
   }
-  recetteInfo +="<tr style=\"background-color:#e6e6e6\"><th>Total</th>";
+  recetteInfo +="<tr style=\"background-color:#e6e6e6\"><th>Total net</th>";
   recetteInfo +="<th style=\"text-align:right\">"+recette+"</th></tr>";
-  depenceInfo +="<tr style=\"background-color:#e6e6e6\"><th>Total</th>";
+  depenceInfo +="<tr style=\"background-color:#e6e6e6\"><th>Total net</th>";
   depenceInfo +="<th style=\"text-align:right\">"+depense+"</th></tr>";
   $("#acti-modal-incomInfo").html(recetteInfo);
   $("#acti-modal-expenInfo").html(depenceInfo);
