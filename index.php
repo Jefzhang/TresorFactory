@@ -31,7 +31,7 @@ echo<<<END
 <div class="activity-modal " id="login-modal">
   <div class="login-form login-modal-content acti-modal-animate container-fluid">
     <form method="post" action="?todo=login" role="login">
-      <img src="images/logo.png"  class="img-responsive" alt="">
+      <img src="images/TresorFactorylogo.png"  class="img-responsive" alt="">
       <p>
       <input type="text" name="login" placeholder="Nom de votre binet" data-validation="required" data-validation-error-msg="Nom de binet invalide" class="form-control input-lg" required>
       </p>
