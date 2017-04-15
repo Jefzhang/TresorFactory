@@ -13,7 +13,7 @@ $page_list = array(
     "title" => "Gerer mieux vos activités",
     "menutitle" => "Acitivités"),
   array(
-    "name" =>"sub",
+    "name" =>"deman",
     "title" =>"Demande subvention pour votre binet",
     "menutitle" =>"Demande"),
   );
@@ -28,7 +28,7 @@ function generateMenu($loggedIn)
       <div class="navbar navbar-default" id="menu">
           <nav class="container">
           <div class="navbar-header">
-               <img src="images/TresorFactorylogo.png"
+               <img src="images/TresorFactorylogo.png" style="height:60px"
                  alt="Affichage d'une aide texte">
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -42,7 +42,7 @@ function generateMenu($loggedIn)
          <div class="collapse navbar-collapse" id="bd-main-nav">
           <ul class="nav navbar-nav">
              <li class="nav-item">
-                 <a class="nav-item nav-link" href="http://localhost/project/index.php?p=home">TresorFactory</a>
+                 <a class="nav-item nav-link" href="http://localhost/project/index.php?p=home" style='font-size:large'>TresorFactory</a>
              </li>
 END;
     for ($i=1;$i<count($page_list);$i++) {
@@ -51,7 +51,7 @@ END;
         $title = $page["menutitle"];
         echo<<<END
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost/project/index.php?p=$name">$title </a>
+            <a class="nav-link" href="http://localhost/project/index.php?p=$name" style="font-size:large">$title </a>
           </li>
 END;
     }
@@ -61,7 +61,7 @@ END;
     echo<<<END
   <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Mon compte <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" style='font-size:large'>Mon compte <span class="caret"></span></a>
           <ul class="dropdown-menu">
               <li><a href="?p=user">Administration</a></li>
               <li><a href="#">Supprimer mon compte</a></li>
@@ -75,10 +75,10 @@ else{
   echo<<<END
   <ul class="nav navbar-nav navbar-right">
     <li class = "nav-item" id="seConnecter">
-       <a class="nav-link" href="#">Se connecter</a>
+       <a class="nav-link" href="#" style='font-size:large'>Se connecter</a>
     </li>
     <li class="nav-item">
-       <a class="nav-link" href="http://localhost/project/register.php">Créer un compte</a>
+       <a class="nav-link" href="http://localhost/project/register.php" style='font-size:large'>Créer un compte</a>
     </li>
   </ul>
 END;

@@ -41,12 +41,12 @@ echo<<<END
       <div class="pwstrength_viewport_progress"></div>
       <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Se connecter</button>
       <div>
-        <a href="http://localhost/project/register.php">Create account</a> or <a href="#">reset password</a>
+        <a href="http://localhost/project/register.php">Create account</a> or <a href="#">Reset password</a>
       </div>
     </form>
 
     <div class="form-links">
-      <a href="http://localhost/project/index.php">www.tresorfactory.com</a>
+      <a href="http://localhost/project/index.php" style="color:#4da6ff">www.tresorfactory.com</a>
     </div>
   </div>
 </div>
@@ -73,6 +73,9 @@ if (isset($_SESSION['loggedIn'])&&$_SESSION["loggedIn"]) {         //already log
     }
     else if($page=='activity'){
       require("content/activity.php");
+    }
+    else if($page=='deman'){
+      require("content/demande.php");
     }
     else if($page=='user'){
       require("data/admin.php");

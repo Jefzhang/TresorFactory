@@ -9,29 +9,28 @@ var table;
 var editor;
 $(document).ready(function(){
     editor = new $.fn.dataTable.Editor({
-    "ajax":'http://localhost/project/content/serverTest.php',
+    "ajax":'http://localhost/project/content/dataTableServer.php',
     "table": "#activity-table",
-    //"idSrc":"id",
     "fields": [ {
             "label": "Nom d'activité:",
-            "name": "activityList.name"
+            "name": "name"
         }, {
             "label": "Date d'avoir lieu:",
-            "name": "activityList.date",
+            "name": "date",
             "type": "datetime",
-            "format": "DD-MM-YY"
+            "format": "YYYY-MM-DD"
         }, {
             "label": "Description:",
-            "name": "activityList.description"
+            "name": "description"
         }, {
             "label": "Recette:",
-            "name": "activityList.recette"
+            "name": "recette"
         },{
-            "label": "Depence:",
-            "name": "activityList.depence"
+            "label": "Depence net:",
+            "name": "depence"
         }, {
-            "label":"Profit",
-            "name":"activityList.profit"
+            "label":"Profit net",
+            "name":"profit"
         }
     ]
 });
@@ -65,11 +64,11 @@ $("#acti_add").click(function(){
 });
 
 editor.on('create',function(e,json,data){
+  console.log('success');
   console.log(json);
   console.log(data);
   var id = data["DT_RowId"].split("_")[1];
   var server = 'http://localhost/project/content/serverDatabase.php';
-  /*
   $.ajax({
     url: server,
     data:'action=add'+ '&eveId='+id,
@@ -77,12 +76,35 @@ editor.on('create',function(e,json,data){
     success:function(succe,statut){
       console.log(succe);
 
-    }});*/
+    }});
 
 });
 
+editor.on('preSubmit',function(e,data,action){
+  console.log('presubmit');
+  console.log(data);
+});
+
+
+
+editor.on('postCreate',function(e,json,data){
+  console.log('postCreate');
+  console.log(json);
+});
+
+editor.on('postSubmit',function(e,json,data,action){
+  console.log('postSubmit');
+  console.log(data);
+  console.log(json);
+});
+
+editor.on('Create',function(e,json,data){
+  console.log('create');
+  console.log(json);
+});
 
 editor.on('remove',function(e,json){
+  console.log('remove');
   console.log(json);
 });
 
@@ -90,32 +112,32 @@ editor.on('remove',function(e,json){
 
 table=$('#activity-table').DataTable( {
     //ajax: "http://localhost/project/content/activity-info.php?t=all",
-    "ajax":"http://localhost/project/content/serverTest.php",
+    "ajax":"http://localhost/project/content/dataTableInit.php",
     columnDef:[ {
 "targets": [ 0 ],
-"data": "activityList.date[, ]"
+"data": "date[, ]"
 } ],
     columns: [
         {
-          data: "activityList.date",
+          data: "date",
           className:"text_center"
         },
         {
-          data: "activityList.name",
+          data: "name",
           className:"text_center"
         },
         {
-          data: "activityList.recette",
+          data: "recette",
           render: $.fn.dataTable.render.number('.',',',2,'€'),
           className:"text_center"
         },
         {
-          data: "activityList.depence",
+          data: "depence",
           render: $.fn.dataTable.render.number('.',',',2,'€'),
           className:'text_center'
         },
         {
-          data: "activityList.profit",
+          data: "profit",
           render: $.fn.dataTable.render.number('.',',',2,'€'),
           className:'text_center'
         },
@@ -332,11 +354,14 @@ $("#activity-table").on('dblclick','tbody tr',function(){
 
   var rowId = table.row($(this).closest('tr')).id();
   console.log(table.row("#"+rowId).data());
+  var name = table.row("#"+rowId).data()["name"];
   var recette =table.row("#"+rowId).data()["recette"];
   var depense = table.row("#"+rowId).data()["depence"];
+  $("#item-modal-title").html(name);
   $("#recette-total").html("€"+recette);
   $("#depense-total").html("€"+depense);
   eveId = rowId.split("_")[1];
+  console.log(eveId);
   changed = false;                            //initially we haven't changed the data
   var server = "http://localhost/project/content/serverDatabase.php";
   $.ajax({                            //get the information of "recette" and "depense"
@@ -428,12 +453,12 @@ $("#activity-table").on('click','button.editor_detaille',function(){
 $("#activity-modal").css('display',"block");
 //console.log(table.row($(this).closest('tr')));
 var rowId = table.row($(this).closest('tr')).id();
-var recette =table.row("#"+rowId).data()["activityList"]["recette"];
-var depense = table.row("#"+rowId).data()["activityList"]["depence"];
-var descrip = table.row('#'+rowId).data()["activityList"]["description"];
-var name = table.row('#'+rowId).data()["activityList"]["name"];
-var date = table.row('#'+rowId).data()["activityList"]["date"];
-var profit = table.row('#'+rowId).data()["activityList"]["profit"];
+var recette =table.row("#"+rowId).data()["recette"];
+var depense = table.row("#"+rowId).data()["depence"];
+var descrip = table.row('#'+rowId).data()["description"];
+var name = table.row('#'+rowId).data()["name"];
+var date = table.row('#'+rowId).data()["date"];
+var profit = table.row('#'+rowId).data()["profit"];
 
 var server = 'http://localhost/project/content/serverDatabase.php';
 $.ajax({
@@ -455,23 +480,31 @@ success: function(json,statut){
     recetteInfo +="<td style=\"text-align:right\">"+acti.recette[term][1]+"</td></tr>";
   }
   for(term in acti.depense){
-    depenceInfo +="<tr><th>"+acti.depense[term][0]+"</th>";
-    depenceInfo +="<td style=\"text-align:right\">"+acti.depense[term][1]+"</td></tr>";
+    var nom = acti.depense[term][0];
     if(acti.depense[term][2]==1){
-      var nom = acti.depense[term][0]+" (sub)";
+      //
+      nom =  nom+" (sub)";
+    }
+      depenceInfo +="<tr><th>"+nom+"</th>";
+      depenceInfo +="<td style=\"text-align:right\">"+acti.depense[term][1]+"</td></tr>";
+
+      /*var nom = acti.depense[term][0]+" (sub)";
       recetteInfo+="<tr><th>"+nom+"</th>";
       recetteInfo+="<td style=\"text-align:right\">"+acti.depense[term][1]+"</td></tr>";
-    }
+    }*/
   }
-  recetteInfo +="<tr style=\"background-color:#e6e6e6\"><th>Total</th>";
+  recetteInfo +="<tr style=\"background-color:#e6e6e6\"><th>Total net</th>";
   recetteInfo +="<th style=\"text-align:right\">"+recette+"</th></tr>";
-  depenceInfo +="<tr style=\"background-color:#e6e6e6\"><th>Total</th>";
+  depenceInfo +="<tr style=\"background-color:#e6e6e6\"><th>Total net</th>";
   depenceInfo +="<th style=\"text-align:right\">"+depense+"</th></tr>";
   $("#acti-modal-incomInfo").html(recetteInfo);
   $("#acti-modal-expenInfo").html(depenceInfo);
   //console.log(typeof(depense));
-  var pieData = [['Recette',parseFloat(recette)],['Profit',parseFloat(profit)],['Depense',parseFloat(depense)]];
-  myLabels = $.makeArray($(pieData).map(function(){return this[1]+'&#8364;'}));
+  var pieData = [['Recette',parseFloat(recette)],['Profit',Math.abs(parseFloat(profit))],['Depense',parseFloat(depense)]];
+  console.log(pieData);
+  myLabels = $.makeArray($(pieData).map(function(){
+    return this[1]+'&#8364;'}));
+  if(parseFloat(profit)<0) myLabels[1] = "-"+myLabels[1];
   var plot1 = $.jqplot('pie1', [pieData], {
             seriesDefaults:{
             renderer:$.jqplot.PieRenderer,
@@ -488,12 +521,12 @@ success: function(json,statut){
             grid: {
                   drawBorder: false,
                   drawGridlines: false,
-                  background: '#ffffff',
+                  background: '#333333',
                   shadow:false
               },
             legend:{
                 show:true,
-                placement: 'outside',
+                //placement: 'outside',
                 rendererOptions: {
                     numberRows: 1
                 },
