@@ -7,7 +7,7 @@ $page_list = array(
   array(
     "name" =>"compte",
     "title" => "Voir le compte de votre binet",
-    "menutitle" =>"Compte"),
+    "menutitle" =>"Comptabilité"),
   array(
     "name" =>"activity",
     "title" => "Gerer mieux vos activités",
