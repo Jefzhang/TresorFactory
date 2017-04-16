@@ -64,7 +64,7 @@ END;
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" style='font-size:large'>Mon compte <span class="caret"></span></a>
           <ul class="dropdown-menu">
               <li><a href="?p=user">Administration</a></li>
-              <li><a href="#">Supprimer mon compte</a></li>
+              <li><a href="http://localhost/project/resetpass.php">Changer MDP</a></li>
               <li><a href="?todo=logout">Log out</a></li>
           </ul>
       </li>
@@ -184,6 +184,7 @@ function generateHTMLHeader($title, $link)
      <script type="text/javascript" src="js/jqplot.dateAxisRenderer.js"></script>
      <script language="javascript" type="text/javascript" src="js/jqplot.canvasAxisTickRenderer.js"></script>
      <script type="text/javascript" src="js/jqplot.enhancedPieLegendRenderer.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
      <script type="text/javascript" src="js/moment.js"></script>
      <script type="text/javascript" src="js/jquery.jexcel.js"></script>
@@ -192,21 +193,30 @@ END;
     echo "<body>".PHP_EOL;
 }
 
-function generateMatrix($taille)
+function resetMdpSuccess()
 {
-    echo "<h1>Deuxième exercice</h1>".PHP_EOL;
-    echo "<h2>Matrice carrée de taille ".$taille."</h2>";
-    echo "<p>".PHP_EOL;
-    echo "<table class=\"table table-bordered\">";
-    for ($i=1;$i<=$taille;$i++) {
-        echo "<tr>".PHP_EOL;
-        for ($j=1;$j<=$taille;$j++) {
-            echo "<td>".$i.",".$j."</td>".PHP_EOL;
-        }
-        echo "</tr>".PHP_EOL;
-    }
-    echo "</p>".PHP_EOL;
+  echo <<<END
+  <div class="container-fluid"  style="text-align: center">
+        <div class="jumbotron">
+              <h1 style="text-align:center">Vous avez réussi à changer votre mot de passe !</h1>
+              <p>Retournez vers la page <span><a href="http://localhost/project/index.php">www.tresorfactory.com</a></span> pour se connecter</p>
+          </div>
+  </div>
+END;
+
 }
+
+function wrongPass(){
+  echo <<<END
+  <div class="container-fluid"  style="text-align: center">
+        <div class="jumbotron">
+              <h1 style="text-align:center">Login ou mot de passe incorrect</h1>
+              <p>Retournez vers la page <span><a href="http://localhost/project/resetpass.php">register</a></span> pour réessayer</p>
+          </div>
+  </div>
+END;
+}
+
 
 function generateHTMLFooter()
 {

@@ -19,7 +19,7 @@
         <div class="col-md-6 admin-info-title">
           Binet :
         </div>
-        <div class="col-md-6 admin-edit-text" id="login">
+        <div class="col-md-6" id="login">
           X-Chine
         </div>
       </div>

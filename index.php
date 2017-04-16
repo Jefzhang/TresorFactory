@@ -2,7 +2,7 @@
 require('utils/utils.php');
 require('data/database.php');
 require('data/loginOut.php');
-$pageTitle = "sub";
+$pageTitle = "TresorFactory";
 generateHTMLHeader($pageTitle, "css");
 session_name("tresor");
 session_start();
@@ -23,14 +23,10 @@ if (array_key_exists('todo', $_GET)) {
         logOut();
     }
 }
-
-
-
-
 echo<<<END
 <div class="activity-modal " id="login-modal">
   <div class="login-form login-modal-content acti-modal-animate container-fluid">
-    <form method="post" action="?todo=login" role="login">
+    <form method="post" action="?todo=login" role="login" >
       <img src="images/TresorFactorylogo.png"  class="img-responsive" alt="">
       <p>
       <input type="text" name="login" placeholder="Nom de votre binet" data-validation="required" data-validation-error-msg="Nom de binet invalide" class="form-control input-lg" required>
@@ -41,7 +37,7 @@ echo<<<END
       <div class="pwstrength_viewport_progress"></div>
       <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Se connecter</button>
       <div>
-        <a href="http://localhost/project/register.php">Create account</a> or <a href="#">Reset password</a>
+        <a href="http://localhost/project/register.php">Create account</a> or <a href="http://localhost/project/resetpass.php">Reset password</a>
       </div>
     </form>
 
@@ -51,7 +47,6 @@ echo<<<END
   </div>
 </div>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 END;
 
 if(isset($_SESSION['loggedIn'])){

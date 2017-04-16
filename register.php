@@ -60,10 +60,10 @@ if (!$form_values_valid) {
 echo<<<END
 <div class="container">
 <div class="row">
-<div class="col-md-5 register-form">
-<h1 style="text-align: center">Register</h1>
-<form role="register" method ="post" action="" class="row" enctype="multipart/form-data">
+<div class="col-md-6 col-md-offset-3 register-form">
 
+<form role="register" method ="post" id="register-form" action="" class="row" enctype="multipart/form-data">
+ <img src="images/TresorFactorylogo.png"  class="img-responsive" alt="">
   <div class="form-group">
     <label for="login">Nom de binêt</label>
     <input type="text" class="form-control" name="login" id="login" placeholder="Nom de votre binêt"  data-validation="required" data-validation-error-msg="Nom de binet invalide">
@@ -114,13 +114,15 @@ echo<<<END
     <input type="number" class="form-control" name="tel" id="tel" placeholder="Votre numéro de portable">
   </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Créer un compte</button>
+  <div class="form-links" style="text-align:center">
+    <a href="http://localhost/project/index.php" style="color:#4da6ff">www.tresorfactory.com</a>
+  </div>
 </form>
 </div>
 </div>
 </div>
-  <script src="js/jquery-1.12.4.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
   <script>
   $.validate({
     modules : 'security'
@@ -138,9 +140,6 @@ else{
               <p><a href="http://localhost/project/index.php">Découvrir tout de suite cet outil !</a></p>
           </div>
   </div>
-  <p>
-   <img src
-  </p>
 END;
 }
 generateHTMLFooter();

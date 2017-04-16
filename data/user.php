@@ -79,7 +79,7 @@ class Utilisateurs
     public static function insererUtilisateur($dbh, $login, $mdp, $nom, $prenom, $poste, $promo, $email, $solde, $sub)
     {
         if (self::getUtilisateur($dbh, $login)==null) {
-            $sth = $dbh->prepare("INSERT INTO `binetlist` (`login`, `mdp`, `nom`,`prenom`,`poste`,`promo`,`email`,`solde`) VALUES(?,SHA1(?),?,?,?,?,?,?,?)");
+            $sth = $dbh->prepare("INSERT INTO `binetlist` (`login`, `mdp`, `nom`,`prenom`,`poste`,`promo`,`email`,`solde`) VALUES(?,sha1(?),?,?,?,?,?,?,?)");
             $sth->execute(array($login,$mdp,$nom,$prenom,$poste,$promo,$email,$solde,$sub));
         }
     }
@@ -211,11 +211,10 @@ class Utilisateurs
 
     public static function testerMdp($user, $mdp)
     {
-        //$user = self::getUtilisateur($dbh,$login);
-       if ($user->mdp == SHA1($mdp)) {
-           return "true";
+       if ($user->mdp == sha1($mdp)) {
+           return true;
        } else {
-           return "false";
+           return false;
        }
     }
 

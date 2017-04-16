@@ -13,12 +13,11 @@ function logIn($dbh){
   }
   $user = Utilisateurs::getUtilisateur($dbh,$login);
   //print_r($user);
-  if($user==null) return "Cet utilisateur n'existe pas";
+  if($user==null) echo "Cet utilisateur n'existe pas";
   else {
     if(Utilisateurs::testerMdp($user,$mdp)){
       $_SESSION['loggedIn']=true;
       $_SESSION['login']=$login;
-      return "Bienvenue!";
     }else {
       $_SESSION['loggedIn']=false;
       return "code false";
